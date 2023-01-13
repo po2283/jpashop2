@@ -20,7 +20,7 @@ public class OrderItem {
     private Item item;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "order_id") //FK
     private Order order;
 
     private int orderPrice;

@@ -7,6 +7,7 @@ import org.hibernate.engine.internal.Cascade;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter @Getter
@@ -26,6 +27,7 @@ public class Order {
 
     //cascade, order을 할 때 자동으로 delivery도 함께 영속 상태로
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "delivery_id") //일대일 관계에서 order가 delivery의 id를 FK로 가진다(일대일은 둘 중 아무에게만 하나만 가지면 됨)
     private Delivery delivery;
 
     private LocalDateTime orderDate;
@@ -40,8 +42,13 @@ public class Order {
     }
 
     public void addOrderItem(OrderItem orderItem){
-        orderItem.add(orderItem);
-        orderItem.setOrder()
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery){
+        this.delivery = delivery;
+        delivery.setOrder(this);
     }
 
 
