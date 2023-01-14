@@ -24,4 +24,6 @@ public class Member {
     //order에 있는 member하고 ont to many
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+
+
 }

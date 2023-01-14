@@ -36,8 +36,11 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    //==연관관계 편입 메서드==//
+    //컨트롤 하는 쪽이 들고 있는 게 좋다
     public void setMember(Member member){
         this.member = member;
+        //양 방향, 멤버에서 오더 리스트를 가지고 와서 현재 오더를 가지고 온다.
         member.getOrders().add(this);
     }
 
