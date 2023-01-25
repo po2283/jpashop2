@@ -12,6 +12,6 @@ import javax.persistence.Entity;
 @DiscriminatorValue("M")
 public class Coffee extends Item {
 
-    private int country;
+    private String country;
     private int gram;
 }

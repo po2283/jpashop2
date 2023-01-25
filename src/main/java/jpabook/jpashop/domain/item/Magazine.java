@@ -11,5 +11,5 @@ import javax.persistence.Entity;
 @DiscriminatorValue("Ma")
 public class Magazine extends Item {
     private int vol;
-    private int subject;
+    private String subject;
 }
